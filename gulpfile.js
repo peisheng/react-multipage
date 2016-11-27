@@ -24,6 +24,8 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const revCollector = require('gulp-rev-collector');
 const exec = require('child_process').exec;
+const proxy=require('proxy-middleware');
+const url=require('url');
 const CDN = 'yourCDNLink';
 
 const webpackConfig = {
@@ -112,10 +114,13 @@ gulp.task('build', function () {
 	});
 });
 gulp.task('reload', function () {
+	 var proxyOptions=url.parse('http://localhost:9000');
+	 proxyOptions.route="/api";
 	browserSync.init(src.views, {
 		startPath: "/views/",
 		server: {
-			baseDir : ['./src']
+			baseDir : ['./src'],
+			middleware:[proxy(proxyOptions)],
 		},
 		notify: false
 	});
@@ -268,7 +273,7 @@ function compileJS(path,dest) {
 		var path = JSON.parse(JSON.stringify(file)).history[0];
 		var sp = path.indexOf('\\') > -1 ? '\\js\\' : '/js/';
 		var target = path.split(sp)[1];
-		return target.substring(0,target.length - 3);
+        return target.substring(0,target.length - 3);
 	}))
 	.pipe(webpackStream(webpackConfig))
 	.on('error',function(err) {

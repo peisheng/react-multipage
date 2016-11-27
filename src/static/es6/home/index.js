@@ -116,7 +116,7 @@
 		function info(props) {
 			(0, _classCallCheck3.default)(this, info);
 
-			var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(info).call(this, props));
+			var _this = (0, _possibleConstructorReturn3.default)(this, (info.__proto__ || (0, _getPrototypeOf2.default)(info)).call(this, props));
 
 			_this.state = {
 				info: 'info'
@@ -125,6 +125,11 @@
 		}
 
 		(0, _createClass3.default)(info, [{
+			key: 'handlerResponse',
+			value: function handlerResponse(err, data) {
+				console.log(data.text[0]);
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
@@ -1045,7 +1050,7 @@
 		function top(props) {
 			(0, _classCallCheck3.default)(this, top);
 
-			var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(top).call(this, props));
+			var _this = (0, _possibleConstructorReturn3.default)(this, (top.__proto__ || (0, _getPrototypeOf2.default)(top)).call(this, props));
 
 			_this.state = {
 				header: 'header'
@@ -1059,12 +1064,12 @@
 				return _react2.default.createElement(
 					'header',
 					null,
-					'我是home业务模块下的,header组件,修改了我home业务模块下的js都会被编译',
+					'\u6211\u662Fhome\u4E1A\u52A1\u6A21\u5757\u4E0B\u7684,header\u7EC4\u4EF6,\u4FEE\u6539\u4E86\u6211home\u4E1A\u52A1\u6A21\u5757\u4E0B\u7684js\u90FD\u4F1A\u88AB\u7F16\u8BD1',
 					_react2.default.createElement(
 						'figure',
 						null,
 						_react2.default.createElement('img', { style: { display: 'block' }, src: __webpack_require__(54), width: '100', height: '100' }),
-						'测试引入资源文件'
+						'\u6D4B\u8BD5\u5F15\u5165\u8D44\u6E90\u6587\u4EF6'
 					)
 				);
 			}
@@ -1121,7 +1126,7 @@
 
 		function loading(props) {
 			(0, _classCallCheck3.default)(this, loading);
-			return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(loading).call(this, props));
+			return (0, _possibleConstructorReturn3.default)(this, (loading.__proto__ || (0, _getPrototypeOf2.default)(loading)).call(this, props));
 		}
 
 		(0, _createClass3.default)(loading, [{
@@ -1130,7 +1135,7 @@
 				return _react2.default.createElement(
 					'div',
 					null,
-					'我是全局通用的,loading组件,会编译所有js文件2'
+					'\u6211\u662F\u5168\u5C40\u901A\u7528\u7684,loading\u7EC4\u4EF6,\u4F1A\u7F16\u8BD1\u6240\u6709js\u6587\u4EF62'
 				);
 			}
 		}]);
